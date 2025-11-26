@@ -1,0 +1,75 @@
+#SC237 FDS Assignment3C
+rowsx = int(input("Enter the number of rows for matrix X: "))
+colsx = int(input("Enter the number of columns for matrix X: "))
+rowsy = int(input("Enter the number of rows for matrix Y: "))
+colsy = int(input("Enter the number of columns for matrix Y: "))
+X = [[int(input("Enter the element of 1st matrix at row {}, column {}: ".format(i+1,j+1))) for j in range(colsx)] for i in range(rowsx)]
+Y = [[int(input("Enter the element of 2nd matrix at row {}, column {}: ".format(i+1,j+1))) for j in range(colsy)] for i in range(rowsy)]
+for x in X:
+   print(x)
+print("\n")
+for y in Y:
+   print(y)
+print("\n")
+
+add = [[0 for j in range(colsx)] for i in range(rowsx)]
+sub = [[0 for j in range(colsx)] for i in range(rowsx)]
+
+if(rowsx==rowsy and colsx==colsy):
+    add = [[X[i][j] + Y[i][j] for j in range(colsx)] for i in range(rowsx)]
+    print("Addition of X and Y Matrix is: \n")
+    for r in add:
+        print(r)
+    sub = [[X[i][j] - Y[i][j] for j in range(colsx)] for i in range(rowsx)]
+    print("\nSubtraction of X and Y Matrix is: \n")
+    for r in sub:
+        print(r)
+else:
+    print("Addition and subtraction cannot be performed.")
+if(len(X)==len(Y[0]) and len(X[0])==len(Y)):
+    result = [[0 for j in range(colsy)] for i in range(rowsx)]
+    for i in range(len(X)):
+        for j in range(len(Y[0])):
+            for k in range(len(Y)):
+                result[i][j] += X[i][k] * Y[k][j]
+    print("\nMultiplication of X and Y matrix is :\n")
+    for l in result:
+        print(l)
+else:
+    print("Multiplication cannot be performed.\n")
+n=input("Enter the matrix you want the transpose of: ")
+
+if rowsx==colsx and rowsy==colsy:
+    if(n=="X"):
+        result = [[0 for j in range(colsx)] for i in range(rowsx)]
+        for i in range(rowsx):
+            for j in range(colsx):
+                result[j][i]=X[i][j]
+        print("Transpose of matrix is: ")
+        for l in result:
+            print(l)
+    else:
+        result = [[0 for j in range(colsy)] for i in range(rowsy)]
+        for i in range(rowsy):
+            for j in range(colsy):
+                result[j][i]=Y[i][j]
+        print("Transpose of matrix is: ")
+        for l in result:
+            print(l)
+else:
+    if(n=="X"):
+        result = [[0 for i in range(rowsx)] for j in range(colsx)]
+        for i in range(rowsx):
+            for j in range(colsx):
+                result[j][i] = X[i][j]
+        print("Transpose of matrix is: ")
+        for l in result:
+            print(l)
+    else:
+        result = [[0 for i in range(rowsy)] for j in range(colsy)]
+        for i in range(rowsy):
+            for j in range(colsy):
+                result[j][i] = Y[i][j]
+        print("Transpose of matrix is: ")
+        for l in result:
+            print(l)

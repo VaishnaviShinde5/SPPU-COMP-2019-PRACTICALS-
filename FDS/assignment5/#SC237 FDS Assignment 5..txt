@@ -1,0 +1,26 @@
+#SC237 FDS Assignment 5.
+size=int(input("Enter the size of array: "))
+arr=[]
+print("Enter the elements of array: ")
+for i in range(0,size):
+    temp=input()
+    arr.append(temp)
+arr1=list(arr)
+
+#Bubble Sort:
+count=0
+for i in range (len(arr)):
+    for j in range(len(arr)-1):
+        if arr[j+1]<arr[j]:
+            count+=1
+            arr[j+1],arr[j]=arr[j],arr[j+1]
+print("Through Bubble sort: ",arr)
+
+#Selection sort:
+for i in range (len(arr1)):
+    ind=i
+    for j in range(i+1,len(arr1)):
+         if arr1[j]<=arr1[ind]:
+             ind=j
+    arr1[i],arr1[ind]=arr1[ind],arr1[i]
+print("Through Selection Sort: ",arr1)

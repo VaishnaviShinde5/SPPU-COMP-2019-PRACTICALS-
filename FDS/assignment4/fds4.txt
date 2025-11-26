@@ -1,0 +1,51 @@
+
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+
+def shell_sort(arr):
+    n = len(arr)
+    gap = n // 2
+    while gap > 0:
+        for i in range(gap, n):
+            temp = arr[i]
+            j = i
+            while j >= gap and arr[j - gap] > temp:
+                arr[j] = arr[j - gap]
+                j -= gap
+            arr[j] = temp
+        gap //= 2
+
+def display_top_five_scores(arr):
+    n = len(arr)
+    if n < 5:
+        print("There are less than five scores.")
+    else:
+        print("Top five scores:")
+        for i in range(n - 1, n - 6, -1):
+            print(arr[i])
+
+if __name__ == "__main__":
+    n = int(input("Enter the number of students: "))
+    percentages = []
+    for i in range(n):
+        percentage = float(input(f"Enter the percentage for student {i + 1}: "))
+        percentages.append(percentage)
+
+    insertion_sorted = percentages.copy()
+    shell_sorted = percentages.copy()
+
+    insertion_sort(insertion_sorted)
+
+    shell_sort(shell_sorted)
+
+    print("\nUsing Insertion Sort:")
+    display_top_five_scores(insertion_sorted)
+    
+    print("\nUsing Shell Sort:")
+    display_top_five_scores(shell_sorted)

@@ -1,0 +1,40 @@
+#SC237 Assignment 2
+total=0
+c=0
+n=int(input("Enter no. of students:"))
+list=[]
+list1=[]
+for i in range(0,n):
+    a=float(input("Enter the scores:"))
+    if a<=-1:
+        c=c+1
+        list1.append(a)
+    else :
+        list.append(a)  
+print("The Highest score from all scores is:",max(list))
+print("The Lowest score from all scores is:",min(list))
+for i in range(0,len(list)):
+    total=total+list[i]
+print("Average of all the marks is:",total/n)  
+print("Absent students:",c)
+
+def max_frequency_score(lst):
+    frequency_dict = {}
+    
+    for element in lst:
+        if element in frequency_dict:
+            frequency_dict[element] += 1
+        else:
+            frequency_dict[element] = 1
+    
+    max_frequency = 0
+    most_common_element = None
+    
+    for element, frequency in frequency_dict.items():
+        if frequency > max_frequency:
+            max_frequency = frequency
+            most_common_element = element
+    
+    return most_common_element, max_frequency
+most_common_element, max_frequency = max_frequency_score(list)
+print(f"The most common element is {most_common_element} with a frequency of {max_frequency}")

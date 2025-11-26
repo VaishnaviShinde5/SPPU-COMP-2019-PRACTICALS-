@@ -1,0 +1,54 @@
+#SC237 Assignment 1
+U=[]#universal
+ga=[]#cricket
+gb=[]#badminton
+gc=[]#football
+res1=[]#intersection of cricket and badminton
+u=int(input("Enter total no.of students:"))
+for i in range (1,u+1):
+    U.append(i)
+print(U)
+c=int(input("Enter the no. of students who play cricket: ")) 
+b=int(input("Enter the no. of students who play badminton: "))
+f=int(input("Enter the no. of students who play football: "))
+for i in range(0,c):
+    a=int(input("Enter the roll no. of student who plays cricket: "))
+    ga.append(a)
+for i in range(0,b):
+    d=int(input("Enter the roll no. of student who plays badminton: "))
+    gb.append(d)
+for i in range(0,f):
+    z=int(input("Enter the roll no. of student who plays football: "))
+    gc.append(z)
+for element in ga:
+    if element in gb:
+        res1.append(element)
+print("Roll no. of students who plays cricket as well as badminton: ",res1)
+merged1=list(gb)#union of cricket and badminton
+for element in ga:
+    if element not in merged1:
+        merged1.append(element)
+merged2=list(merged1)#copy of union merged1
+for element in merged1:
+    if element in res1:
+        merged2.remove(element)
+print("Roll no. of students who plays cricket or badminton but not both: ",merged2)#(CUB)-CnB
+merged3=list(gc)#football
+for element in merged1:
+    if element not in merged3:
+        merged3.append(element)#union of all
+merged4=list(merged3)#copy of union of all
+for element in merged3:
+    if element in merged1:
+        merged4.remove(element)
+print("Roll no. of students who play football only ",merged4)#only football players
+merged5=list(merged3)#copy of union
+for element in merged3:
+    if element in gb:
+        merged5.remove(element)
+print("Roll no. of students who play cricket and football only ",merged5)
+z=[]
+for element in U:
+    if element not in merged3:
+        z.append(element)
+print("Roll no. of students who doesnt play any game: ",z)

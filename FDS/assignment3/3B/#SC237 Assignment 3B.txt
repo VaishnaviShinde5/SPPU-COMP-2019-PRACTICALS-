@@ -1,0 +1,73 @@
+#SC237 Assignment 3B
+def find_longest_word(string):
+    words = string.split()
+    longest_word = ""
+    max_length = 0
+    for word in words:
+        if len(word) > max_length:
+            max_length = len(word)
+            longest_word = word
+    return longest_word
+
+def count_character_frequency(string, char):
+    count = 0
+    for c in string:
+        if c == char:
+            count += 1
+    return count
+
+def is_palindrome(string):
+    string1 = string[::-1]
+    if(string1==string):
+        print("The string is a palindrome.")
+    else:
+        print("The string is not a palindrome.")
+
+def find_substring_index(string, substring):
+    for i in range(len(string) - len(substring) + 1):
+        if string[i:i+len(substring)] == substring:
+            return i
+    return -1
+
+def count_word_occurrences(string):
+    words = string.split()
+    word_count = {}
+    for word in words:
+        if word in word_count:
+            word_count[word] += 1
+        else:
+            word_count[word] = 1
+    return word_count
+
+
+print("\na) To display word with the longest length \nb) To determines the frequency of occurrence of particular character in the string\nc) To check whether given string is palindrome or not\nd) To display index of first appearance of the substring\ne) To count the occurrences of each word in a given string")
+operation = input("\nEnter the operation (a, b, c, d, e): ")
+
+if operation == 'a':
+        input_string = input("Enter a string: ")
+        longest_word = find_longest_word(input_string)
+        print("Longest word:", longest_word)
+elif operation == 'b':
+        input_string = input("Enter a string: ")
+        char_to_count = input("Enter a character to count its frequency: ")
+        char_frequency = count_character_frequency(input_string, char_to_count)
+        print(f"Frequency of '{char_to_count}': {char_frequency}")
+elif operation == 'c':
+        input_string = input("Enter a string: ")
+        is_palindrome(input_string)
+elif operation == 'd':
+        input_string = input("Enter a string: ")
+        substring_to_find = input("Enter a substring to find its index: ")
+        substring_index = find_substring_index(input_string, substring_to_find)
+        if substring_index != -1:
+            print(f"Index of '{substring_to_find}': {substring_index}")
+        else:
+            print(f"'{substring_to_find}' not found in the string.")
+elif operation == 'e':
+        input_string = input("Enter a string: ")
+        word_occurrences = count_word_occurrences(input_string)
+        print("Word occurrences:")
+        for word, count in word_occurrences.items():
+            print(f"'{word}': {count}")
+else:
+        print("Invalid operation.")
